@@ -1,0 +1,37 @@
+name: Node.js CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    strategy:
+      matrix:
+        node-version: [20.9.0]
+    env: 
+      NEXT_PUBLIC_UPLOAD_FILE: ${{secrets.NEXT_PUBLIC_UPLOAD_FILE}}
+      NEXT_PUBLIC_GET_FILE: ${{secrets.NEXT_PUBLIC_GET_FILE}}
+      NEXT_PUBLIC_ACCESS_KEY: ${{secrets.NEXT_PUBLIC_ACCESS_KEY}}
+      NEXT_PUBLIC_BASE_URL: ${{secrets.NEXT_PUBLIC_BASE_URL}}
+      NEXT_PUBLIC_HOST_URL: ${{secrets.NEXT_PUBLIC_HOST_URL}}
+      NEXT_PUBLIC_RESET_PASSWORD_CODE: ${{secrets.NEXT_PUBLIC_RESET_PASSWORD_CODE}}
+      CLIENT_ID: ${{secrets.CLIENT_ID}}
+      CLIENT_SECRET: ${{secrets.CLIENT_SECRET}}
+      REDIRECT_URI: ${{secrets.REDIRECT_URI}}
+      REFRESH_TOKEN: ${{secrets.REFRESH_TOKEN}}        
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version}}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version}}
+          cache: 'npm'
+
+      - run: npm ci
+      - run: npm run build --if-present
+

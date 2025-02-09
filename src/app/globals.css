@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+
+  background-color: #f4f4f4;
+}
+body main {
+  background-image: url("../assets/black-wall-with-golden-cracks.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+h1, h2 {
+  color: #333;
+}
+p {
+  color: #555;
+}
+ul {
+  background: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+li {
+  margin-bottom: 10px;
+}
