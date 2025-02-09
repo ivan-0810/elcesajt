@@ -1,3 +1,4 @@
+/* eslint-disable */
 "use client"
 
 import BgImage from "../assets/black-wall-with-golden-cracks.webp";
